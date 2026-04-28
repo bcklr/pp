@@ -1,67 +1,61 @@
-body {
-  background-color: #2b2b2b;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-family: 'Times New Roman', serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
 
+body {
+    /* Rich, earthy brown background */
+    background-color: #2e241f; 
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Playfair Display', serif;
+    background-image: url('https://www.transparenttextures.com/patterns/pinstriped-dark.png');
+}
 
 .page-container {
-  background-color: #fcfaf7;
-  width: 90%;
-  max-width: 900px;
-  height: 90vh;
-  padding: 50px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    background-color: #f7f3ed; /* Linen/Bone color */
+    width: 90vw; 
+    min-height: 90vh;
+    padding: 60px;
+    position: relative;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.6);
+    background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+    border-radius: 4px; /* Sharp, editorial edges */
+    display: flex;
+    flex-direction: column;
 }
 
 .brand-name {
-  font-size: 2.5rem;
-  letter-spacing: 4px;
-  margin: 0;
-}
-
-
-.palm-wrapper {
-  font-size: 3rem;
-  display: inline-block;
-
-transform-origin: bottom center;
-  animation: sway 4s ease-in-out infinite;
-}
-
-@keyframes sway {
-  0%, 100% { transform: rotate(-4deg); }
-  50% { transform: rotate(4deg); }
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 12px;
+    color: #4a3728; /* Warm chocolate brown */
+    margin: 0;
+    /* This makes it feel like an expensive print */
+    text-shadow: 1px 1px 0px #fff, 2px 2px 0px rgba(0,0,0,0.1);
 }
 
 .module-grid {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 10vh;
 }
 
 .card {
-  width: 280px;
-  height: 280px;
-  background-color: #1a1a1a;
-  border-radius: 2px;
-  transition: transform 0.3s ease;
+    width: 350px;
+    height: 450px;
+    /* Instead of solid black, a warm clay-colored gradient */
+    background: linear-gradient(135deg, #4a3728 0%, #2e241f 100%); 
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05); /* Subtle rim light */
+    
+    transition: all 0.5s ease;
 }
-
 
 .card:hover {
-  transform: translateY(-10px);
+    transform: scale(1.03) translateY(-10px);
+    /* Adding a warm "inner glow" on hover */
+    box-shadow: 0 40px 80px rgba(139, 69, 19, 0.4);
 }
-  
