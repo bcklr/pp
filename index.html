@@ -25,24 +25,33 @@
     </main>
 
     <script>
-        const logo = document.querySelector('.chrome-logo');
-        const wrap = document.querySelector('.logo-wrap');
+    const logo = document.querySelector('.chrome-logo');
 
-        wrap.addEventListener('mousemove', (e) => {
-            let box = logo.getBoundingClientRect();
-            let centerX = box.left + box.width / 2;
-            let centerY = box.top + box.height / 2;
+    // We listen to the whole window now so it's more responsive
+    window.addEventListener('mousemove', (e) => {
+        let box = logo.getBoundingClientRect();
+        
+        // Find the center of the logo
+        let logoCenterX = box.left + box.width / 2;
+        let logoCenterY = box.top + box.height / 2;
 
-            // Adjust these numbers (10) to make the tilt stronger or weaker
-            let rotateX = (centerY - e.clientY) / 10;
-            let rotateY = (e.clientX - centerX) / 10;
+        // Calculate distance from mouse to center
+        // Increasing the divisor (20) makes the tilt "heavier/slower"
+        // Decreasing it (5) makes it "wilder"
+        let rotateX = (logoCenterY - e.clientY) / 15; 
+        let rotateY = (e.clientX - logoCenterX) / 15;
 
-            logo.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.1)`;
-        });
+        // The transform: 
+        // We add a slight scale so it pops out at you while it tilts
+        logo.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    });
 
-        wrap.addEventListener('mouseleave', () => {
+    // Optional: Reset when the mouse is at the very bottom
+    window.addEventListener('mouseout', (e) => {
+        if (!e.relatedTarget) {
             logo.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-        });
-    </script>
+        }
+    });
+</script>
 </body>
 </html>
