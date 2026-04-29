@@ -9,8 +9,10 @@
 <body>
 
     <nav class="editorial-nav">
-        <div class="logo-wrap">
-            <img src="logo.png" alt="BCKLR Logo" class="chrome-logo">
+        <div class="logo-box">
+            <div class="logo-wrap">
+                <img src="logo.png" alt="BCKLR Logo" class="chrome-logo">
+            </div>
         </div>
         <div class="tagline">GFX & SOFTWARE ENGINEERING</div>
     </nav>
@@ -25,33 +27,25 @@
     </main>
 
     <script>
-    const logo = document.querySelector('.chrome-logo');
+        const logo = document.querySelector('.chrome-logo');
+        const range = document.querySelector('.logo-box');
 
-    // We listen to the whole window now so it's more responsive
-    window.addEventListener('mousemove', (e) => {
-        let box = logo.getBoundingClientRect();
-        
-        // Find the center of the logo
-        let logoCenterX = box.left + box.width / 2;
-        let logoCenterY = box.top + box.height / 2;
+        range.addEventListener('mousemove', (e) => {
+            let box = logo.getBoundingClientRect();
+            let centerX = box.left + box.width / 2;
+            let centerY = box.top + box.height / 2;
 
-        // Calculate distance from mouse to center
-        // Increasing the divisor (20) makes the tilt "heavier/slower"
-        // Decreasing it (5) makes it "wilder"
-        let rotateX = (logoCenterY - e.clientY) / 15; 
-        let rotateY = (e.clientX - logoCenterX) / 15;
+            // Tilt Intensity (Higher number = subtle, Lower = aggressive)
+            let rotateX = (centerY - e.clientY) / 8; 
+            let rotateY = (e.clientX - centerX) / 8;
 
-        // The transform: 
-        // We add a slight scale so it pops out at you while it tilts
-        logo.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-    });
+            logo.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.1)`;
+        });
 
-    // Optional: Reset when the mouse is at the very bottom
-    window.addEventListener('mouseout', (e) => {
-        if (!e.relatedTarget) {
+        // Reset the logo position when the mouse leaves the box
+        range.addEventListener('mouseleave', () => {
             logo.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
