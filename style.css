@@ -1,85 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-
-body {
-    background-color: #0a0a0a; /* Obsidian */
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    color: #d4af37; /* Gold text */
-    overflow-x: hidden;
-}
-
 .editorial-nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 5%;
+    /* Increased height for the bigger logo */
+    padding: 20px 5%;
+    min-height: 180px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(15px);
+    background: linear-gradient(to bottom, #0a0a0a 60%, rgba(10,10,10,0) 100%);
     box-sizing: border-box;
 }
 
-.logo-wrap {
-    /* Perspective is what makes the 3D tilt look "real" */
-    perspective: 1000px; 
-}
-
 .chrome-logo {
-    height: 85px; 
+    /* Bold, clear sizing */
+    height: 150px; 
     width: auto;
-    transition: transform 0.1s ease-out;
-    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+    
+    /* This makes the tilt feel "liquid" */
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    
+    /* Heavy drop shadow to make it feel like a physical object */
+    filter: drop-shadow(0 20px 40px rgba(212, 175, 55, 0.3));
+    
+    transform-style: preserve-3d;
     will-change: transform;
 }
 
-.tagline {
-    font-size: 0.75rem;
-    letter-spacing: 4px;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.gallery {
-    padding: 200px 5% 100px 5%;
-}
-
-.display-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.display-box {
-    aspect-ratio: 1 / 1;
-    /* Golden Gradient Squares */
-    background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
-    border-radius: 2px;
-    position: relative;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
-}
-
-.display-box:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 40px 80px rgba(212, 175, 55, 0.2);
-}
-
-.box-inner {
-    padding: 25px;
-    height: 100%;
+.logo-wrap {
+    perspective: 1200px;
     display: flex;
-    align-items: flex-end;
-}
-
-.box-label {
-    color: #1a1a1a;
-    font-size: 0.7rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    opacity: 0.6;
+    align-items: center;
+    justify-content: center;
 }
